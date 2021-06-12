@@ -5,10 +5,6 @@
 ## About
 Gibme Crypto is a free, open-source cryptocurrency sentiment web application.
 
----
-> **_NOTE:_** The price prediction feature, along with the trading charts, is currently unavailable, but it should be up soon.
----
-
 This project includes some highly notable tools:
 - [React](https://facebook.github.io/react/), for building interactive UIs
 - [django-js-reverse](https://github.com/ierror/django-js-reverse), for generating URLs on JS
