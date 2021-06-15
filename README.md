@@ -3,7 +3,7 @@
 # Gibme Crypto
 
 ## About
-Gibme Crypto is a free, open-source cryptocurrency sentiment web application.
+Gibme Crypto is an open-source cryptocurrency sentiment web application focused on simplicity. It aims to provide features while maintaining a grounded, straightforward interface.
 
 This project includes some highly notable tools:
 - [React](https://facebook.github.io/react/), for building interactive UIs
@@ -27,11 +27,10 @@ Also, includes a Heroku `app.json` and a working Django `production.py` settings
 - Setup [editorconfig](http://editorconfig.org/), [prospector](https://prospector.landscape.io/en/master/) and [ESLint](http://eslint.org/) in the text editor you will use to develop.
 
 ### Setup
-- Inside the `backend` folder, do the following:
-  - Create a copy of `gibme_crypto/settings/local.py.example`:  
-  `cp gibme_crypto/settings/local.py.example gibme_crypto/settings/local.py`
-  - Create a copy of `.env.example`:
-  `cp .env.example .env`
+- Inside the `backend` folder, create a copy of `.env.example`:    
+  ```
+  cp .env.example .env
+  ```
 
 ### If you are using Docker:
 - Open a new command line window and go to the project's directory.
