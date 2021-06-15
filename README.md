@@ -28,9 +28,7 @@ Also, includes a Heroku `app.json` and a working Django `production.py` settings
 
 ### Setup
 - Inside the `backend` folder, create a copy of `.env.example`:    
-  ```
-  cp .env.example .env
-  ```
+  `cp .env.example .env`
 
 ### If you are using Docker:
 - Open a new command line window and go to the project's directory.
