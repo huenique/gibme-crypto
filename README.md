@@ -3,7 +3,7 @@
 # Gibme Crypto
 
 ## About
-Gibme Crypto is an open-source cryptocurrency sentiment web application focused on simplicity. It aims to provide features while maintaining a grounded, straightforward interface.
+Gibme Crypto is an open-source cryptocurrency sentiment web application for casual passersby and expert traders. It's focused on simplicity, aiming to provide features while maintaining a grounded, straightforward interface.
 
 This project includes some highly notable tools:
 - [React](https://facebook.github.io/react/), for building interactive UIs
