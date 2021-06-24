@@ -2,9 +2,9 @@ import api from './api';
 
 // Action types
 const types = {
-  FETCH_REQUESTED: 'rest_check/FETCH_REQUESTED',
-  FETCH_SUCCESS: 'rest_check/FETCH_SUCCESS',
-  FETCH_ERROR: 'rest_check/FETCH_ERROR',
+  FETCH_REQUESTED: 'actions/FETCH_REQUESTED',
+  FETCH_SUCCESS: 'actions/FETCH_SUCCESS',
+  FETCH_ERROR: 'actions/FETCH_ERROR',
 };
 
 export const fetch = {

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import Home from './pages/Home';
 import configureStore from './store';
-import SentryBoundary from './utils/SentryBoundary';
+import SentryBoundary from './components/SentryBoundary';
 
 const store = configureStore({});
 const App = () => (

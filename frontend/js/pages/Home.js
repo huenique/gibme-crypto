@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
 import _ from 'lodash';
+
 import React, { useEffect, useState } from 'react';
 import {
   Button,
@@ -14,17 +15,14 @@ import {
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import CustomNavigation from '../components/Drawer/CustomDrawer';
 import BasicNavbar from '../components/Navbars/Navbar';
 import { fetch } from '../store/rest_check';
-import pairActivity from '../utils/pairs';
-import pairSocialMetrics from '../utils/pairsSocialMetrics';
-import pairTradingMetrics from '../utils/pairsTradingMetrics';
-import ObjectParser from '../utils/parseObject';
 
-import DisplayRaw from './Raw';
-import SocialMetricsTable from './SocialMetricsTable';
-import TradingMetricsTable from './TradingMetricsTable';
+import DisplayRaw from '../components/Raw';
+import SocialMetricsTable from '../components/SocialMetricsTable';
+import TradingMetricsTable from '../components/TradingMetricsTable';
+
+import MainAsset from '../helpers/mainAssets';
 
 const Home = () => {
   const [modal, setModalShow] = useState(false);
@@ -38,124 +36,8 @@ const Home = () => {
     const action = fetch.fetchAssets();
     dispatch(action);
   }, [dispatch]);
-  // Main assets data
-  // Assets & objects
-  const bchObj = new ObjectParser(_.get(assets, 'BCH.data', '')).object[0];
-  const btcObj = new ObjectParser(_.get(assets, 'BTC.data', '')).object[0];
-  const dogeObj = new ObjectParser(_.get(assets, 'DOGE.data', '')).object[0];
-  const ethObj = new ObjectParser(_.get(assets, 'ETH.data', '')).object[0];
-  const ltcObj = new ObjectParser(_.get(assets, 'LTC.data', '')).object[0];
 
-  const mainAssetColumns = [
-    'name',
-    'symbol',
-    'price',
-    'price_btc',
-    'market_cap',
-    'percent_change_24h',
-    'percent_change_7d',
-    'volume_24h',
-    'max_supply',
-  ];
-
-  const bchActivePairs = [];
-  const btcActivePairs = [];
-  const dogeActivePairs = [];
-  const ethctivePairs = [];
-  const ltcActivePairs = [];
-
-  for (const key of mainAssetColumns) {
-    bchActivePairs.push(_.get(bchObj, key));
-    btcActivePairs.push(_.get(btcObj, key));
-    dogeActivePairs.push(_.get(dogeObj, key));
-    ethctivePairs.push(_.get(ethObj, key));
-    ltcActivePairs.push(_.get(ltcObj, key));
-  }
-
-  // BCH
-  const bchName = _.get(bchObj, 'name');
-  const bchSymbol = _.get(bchObj, 'symbol');
-
-  // BTC
-  const btcName = _.get(btcObj, 'name');
-  const btcSymbol = _.get(btcObj, 'symbol');
-
-  // DOGE
-  const dogeName = _.get(dogeObj, 'name');
-  const dogeSymbol = _.get(dogeObj, 'symbol');
-
-  // ETH
-  const ethName = _.get(ethObj, 'name');
-  const ethSymbol = _.get(ethObj, 'symbol');
-
-  // LTC
-  const ltcName = _.get(ltcObj, 'name');
-  const ltcSymbol = _.get(ltcObj, 'symbol');
-
-  // First Table, Activity
-  const bchPairs = pairActivity(bchActivePairs);
-  const btcPairs = pairActivity(btcActivePairs);
-  const dogePairs = pairActivity(dogeActivePairs);
-  const ethPairs = pairActivity(ethctivePairs);
-  const ltcPairs = pairActivity(ltcActivePairs);
-
-  // Second Table, Social Metrics
-  const bchSocialPairs = pairSocialMetrics(bchObj);
-  const btcSocialPairs = pairSocialMetrics(btcObj);
-  const dogeSocialPairs = pairSocialMetrics(dogeObj);
-  const ethSocialPairs = pairSocialMetrics(ethObj);
-  const ltcSocialPairs = pairSocialMetrics(ltcObj);
-
-  // Second Table, Social Metrics
-  const bchTradingPairs = pairTradingMetrics(bchObj);
-  const btcTradingPairs = pairTradingMetrics(btcObj);
-  const dogeTradingPairs = pairTradingMetrics(dogeObj);
-  const ethTradingPairs = pairTradingMetrics(ethObj);
-  const ltcTradingPairs = pairTradingMetrics(ltcObj);
-
-  const coins = [
-    {
-      name: bchName,
-      symbol: bchSymbol,
-      data: bchPairs,
-      socialData: bchSocialPairs,
-      tradingData: bchTradingPairs,
-      obj: bchObj,
-    },
-    {
-      name: btcName,
-      symbol: btcSymbol,
-      data: btcPairs,
-      socialData: btcSocialPairs,
-      tradingData: btcTradingPairs,
-      obj: btcObj,
-    },
-    {
-      name: dogeName,
-      symbol: dogeSymbol,
-      data: dogePairs,
-      socialData: dogeSocialPairs,
-      tradingData: dogeTradingPairs,
-      obj: dogeObj,
-    },
-    {
-      name: ethName,
-      symbol: ethSymbol,
-      data: ethPairs,
-      socialData: ethSocialPairs,
-      tradingData: ethTradingPairs,
-      obj: ethObj,
-    },
-    {
-      name: ltcName,
-      symbol: ltcSymbol,
-      data: ltcPairs,
-      socialData: ltcSocialPairs,
-      tradingData: ltcTradingPairs,
-      obj: ltcObj,
-    },
-  ];
-
+  const coins = new MainAsset(assets).parsepair()
   const options = {
     keys: ['name', 'symbol'],
   };
