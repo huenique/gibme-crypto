@@ -2,9 +2,9 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 
+import SentryBoundary from './components/SentryBoundary';
 import Home from './pages/Home';
 import configureStore from './store';
-import SentryBoundary from './components/SentryBoundary';
 
 const store = configureStore({});
 const App = () => (

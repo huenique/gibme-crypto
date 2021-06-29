@@ -1,6 +1,5 @@
 import Fuse from 'fuse.js';
 import _ from 'lodash';
-
 import React, { useEffect, useState } from 'react';
 import {
   Button,
@@ -16,13 +15,11 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import BasicNavbar from '../components/Navbars/Navbar';
-import { fetch } from '../store/rest_check';
-
 import DisplayRaw from '../components/Raw';
 import SocialMetricsTable from '../components/SocialMetricsTable';
 import TradingMetricsTable from '../components/TradingMetricsTable';
-
 import MainAsset from '../helpers/mainAssets';
+import { fetch } from '../store/rest_check';
 
 const Home = () => {
   const [modal, setModalShow] = useState(false);
@@ -37,7 +34,7 @@ const Home = () => {
     dispatch(action);
   }, [dispatch]);
 
-  const coins = new MainAsset(assets).parsepair()
+  const coins = new MainAsset(assets).parsepair();
   const options = {
     keys: ['name', 'symbol'],
   };
