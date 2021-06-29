@@ -1,26 +1,8 @@
 [![License: MIT](https://img.shields.io/github/license/huenique/gibme-crypto.svg)](LICENSE.txt)
 
 # Gibme Crypto
-
 ## About
 Gibme Crypto is an open-source cryptocurrency sentiment web application for casual passersby and expert traders. It's focused on simplicity, aiming to provide features while maintaining a grounded, straightforward interface.
-
-This project includes some highly notable tools:
-- [React](https://facebook.github.io/react/), for building interactive UIs
-- [django-js-reverse](https://github.com/ierror/django-js-reverse), for generating URLs on JS
-- [React Bootstrap](https://https://react-bootstrap.github.io/), for responsive styling
-- [Webpack](https://webpack.js.org/), for bundling static assets
-- [Celery](http://www.celeryproject.org/), for background worker tasks
-- [WhiteNoise](http://whitenoise.evans.io/en/stable/) with [brotlipy](https://github.com/python-hyper/brotlipy), for efficient static files serving
-- [prospector](https://prospector.landscape.io/en/master/) and [ESLint](https://eslint.org/) with [pre-commit](http://pre-commit.com/) for automated quality assurance (does not replace proper testing!)
-
-For continuous integration, a [CircleCI](https://circleci.com/) configuration `.circleci/config.yml` is included.
-
-Also, includes a Heroku `app.json` and a working Django `production.py` settings, enabling easy deployments with ['Deploy to Heroku' button](https://devcenter.heroku.com/articles/heroku-button). Those Heroku plugins are included in `app.json`:
-- PostgreSQL, for DB
-- Redis, for Celery
-- Sendgrid, for e-mail sending
-- Papertrail, for logs and platform errors alerts (must set them manually)
 
 ## Running
 ### Tools
@@ -150,12 +132,6 @@ After enabling dyno metadata and setting the environment variables, your next He
 ## Pre-commit hooks
 - Run `pre-commit install` to enable the hook into your git repo. The hook will run automatically for each commit.
 - Run `git commit -m "Your message" -n` to skip the hook if you need.
-
-## Opinionated Settings
-Some settings defaults were decided based on Vinta's experiences. Here's the rationale behind them:
-
-### `CELERY_ACKS_LATE = True`
-We believe Celery tasks should be idempotent. So for us it's safe to set `CELERY_ACKS_LATE = True` to ensure tasks will be re-queued after a worker failure. Check Celery docs on ["Should I use retry or acks_late?"](https://docs.celeryproject.org/en/latest/faq.html#should-i-use-retry-or-acks-late) for more info.
 
 ## Features Catalogue
 
